@@ -1,0 +1,79 @@
+import java.util.Scanner;
+public class Rome_numbers {
+
+    public static void main(String args[]) {
+        System.out.print("Enter an integer number to be displayed in roman :");
+        Scanner scan = new Scanner(System.in);
+        int number = scan.nextInt();
+        // number е числото което искаме да променим в римски цифри.
+        // number_b служи като запис на number.Това ни служи по-нататък в кода.
+        String a = "";
+        // а; тук приема стойностите на римските цифри
+        // (Написал съм го със String, защото когато пробвах със char не даваше да се въвежда повече от един елемент.Иначе може и с char)
+        while(number < 1 || number > 3999){
+            // Тук въртим един while, ако имаме въведено грешно число, за да няма бъгове.
+            System.out.println("Invalid number!");
+            number = scan.nextInt();
+        }
+        int number_c = number;
+        while (number >= 1 && number <= 3999) {
+            // Това е другият while, който се изпълнява само когато сме написали правилно число.
+            // Той се съдържа от много други while-ове, които задават римските числа на променливата String a.
+            while (number >= 1000) {
+                number -= 1000;
+                a += "M";
+            }
+            while (number >= 900) {
+                number -= 900;
+                a += "CM";
+            }
+            while (number >= 500) {
+                number -= 500;
+                a += "D";
+            }
+            while (number >= 400) {
+                number -= 400;
+                a += "CD";
+            }
+            while (number >= 100) {
+                number -= 100;
+                a += "C";
+            }
+            while (number >= 90) {
+                number -= 90;
+                a += "XC";
+            }
+            while (number >= 50) {
+                number -= 50;
+                a += "L";
+            }
+            while (number >= 40) {
+                number -= 40;
+                a += "XL";
+            }
+            while (number >= 10) {
+                number -= 10;
+                a += "X";
+            }
+            while (number >= 9) {
+                number -= 9;
+                a += "IX";
+            }
+            while (number >= 5) {
+                number -= 5;
+                a += "V";
+            }
+            while (number >= 4) {
+                number -= 4;
+                a += "IV";
+            }
+            while (number >= 1) {
+                number -= 1;
+                a += "I";
+            }
+            System.out.println(a);
+        }
+        System.out.println("Number before conversion: " + number_c);
+        System.out.println("Number after conversion: " + a);
+    }
+}
